@@ -1,0 +1,18 @@
+<div class="back-btn" (click)="onBackBtnClick()">
+  <div><mat-icon>keyboard_arrow_left</mat-icon></div>
+  <div>Back</div>
+</div>
+<div class="action-btn">
+  <span class="edit-btn" (click)="onEditClick()">{{editMode ? 'Save' : 'Edit'}}</span>
+  <span class="delete-btn" *ngIf="!editMode" (click)="onDeleteClick()">Delete</span>
+</div>
+<form novalidate [formGroup]="userForm">
+  <img [src]="editedUser?.picture.large" class="user-image">
+  <div class="user-info">
+    <input class="user-title" [class.readonly-input]="!editMode" [readOnly]="!editMode" formControlName="name">
+    <input formControlName="email" [class.readonly-input]="!editMode" [readOnly]="!editMode" *ngIf="editMode; else email">
+    <ng-template #email><a href="mailto:{{editedUser?.email}}" class="email">{{editedUser?.email}}</a></ng-template>
+    <input formControlName="phone" [class.readonly-input]="!editMode" [readOnly]="!editMode">
+    <input formControlName="country" [class.readonly-input]="!editMode" [readOnly]="!editMode">
+  </div>
+</form>

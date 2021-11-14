@@ -1,0 +1,13 @@
+<mat-tab-group mat-align-tabs="start" animationDuration="0ms"
+               [(selectedIndex)]="tabIndex" (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Male">
+    <app-table *ngIf="maleUsers" [userData]="maleUsers"
+               (detailsClick)="onDetailsClick($event)"
+               (deleteUserClick)="onDeleteUserClick($event)"></app-table>
+  </mat-tab>
+  <mat-tab label="Female">
+    <app-table *ngIf="femaleUsers" [userData]="femaleUsers"
+               (detailsClick)="onDetailsClick($event)"
+               (deleteUserClick)="onDeleteUserClick($event)"></app-table>
+  </mat-tab>
+</mat-tab-group>
